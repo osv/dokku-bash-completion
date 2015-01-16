@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+PLUGIN_DIR=$(dirname $0)
+sudo cp $PLUGIN_DIR/cmp_template /etc/bash_completion.d/dokku
