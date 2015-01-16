@@ -100,7 +100,7 @@ EOF
         ;;
     help)
         cat && cat<<EOF
-    completion <command> [hostname]                 Create completion file for bash
+    completion [command] [hostname]                 Create completion file for bash
 EOF
         ;;
     *)
