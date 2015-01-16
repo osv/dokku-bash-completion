@@ -37,3 +37,8 @@ Currently can complete:
 - commands
 - application ("<app>")
 - env variables for (config:get, config:set, etc)
+
+## TODO
+
+- dokku-alt - complete database name
+- complete volume names (volume:list)
