@@ -7,7 +7,7 @@ PLUGIN_DIR=$(dirname $0)
 case "$1" in
     cmp:app:list)
         for app in $(ls -d $DOKKU_ROOT/*/ 2>/dev/null); do
-            if [[ -f "$app/refs/heads/master" ]]; then
+            if [[ -f "$app/description" ]]; then
                 basename "$app"
             fi
         done
