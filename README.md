@@ -16,9 +16,11 @@ ssh dokku@example.com completion dokku-cli | sudo bash
 # If you want force domain when example.com machine
 # have different hostname than example.com:
 ssh dokku@example.com completion dokku-cli example.com | sudo bash
+# now you can complete
+# dokku-cli [TAB]..
 ```
 
-The "/usr/local/bin/dokku-cli" will be created or update
+The "/usr/local/bin/dokku-cli" will be created or updated
 (but only if that command created before by ssh ... completion dokku-cli) and looks like:
 
 ```shell
