@@ -77,7 +77,7 @@ $SEPARATOR
 cat <<'EOF'
 EOF
         cat $PLUGIN_DIR/cmp_template | \
-            sed -e "s/^\\(\\s*_DOKKU_CMD\\)=.*/\\1=\"$CMD\"/g" | \
+            sed -e "s/__dokku_LOCAL_DOKKU dokku/__dokku_LOCAL_DOKKU $CMD/g"| \
             sed -e "s/^\\(\\s*_dokku_cmd_LOCAL_DOKKU\\)=.*/\\1=\"$CMD\"/g" | \
             sed -e "s/LOCAL_DOKKU/$HASH/ig"
         echo "EOF"

@@ -1,6 +1,3 @@
-
-_DOKKU_CMD="dokku"
-
 _dokku_dos2unix()
 {
     sed -e "s/\r$//"
@@ -15,12 +12,14 @@ __dokku_LOCAL_DOKKU()
     _dokku_cmd_LOCAL_DOKKU="sudo dokku"
 
     # cache `dokku help` output for faster usage but w/o help describe
-    if [[ $((_LOCAL_DOKKU_CMP_CACHED_CMD_TIMEOUT + 364)) < $(date +%s) ]]; then
+    _LOCAL_DOKKU_NOW=$(date +%s)
+    _LOCAL_DOKKU_DIFF=$((_LOCAL_DOKKU_CMP_CACHED_CMD_TIMEOUT + 364))
+    if [ $_LOCAL_DOKKU_DIFF -lt $_LOCAL_DOKKU_NOW ]; then
         _LOCAL_DOKKU_CMP_CACHED_CMD_TIMEOUT=$(date +%s)
         _LOCAL_DOKKU_CMP_CACHED_CMD=`$_dokku_cmd_LOCAL_DOKKU help | grep -E "^    " | sed  's/^\s\{3\}\(\s.*\s\)\s.*/\1/'`
     fi
 
-    # first param of _DOKKU_CMD?
+    # first param?
     if [[ ${#words[@]} < 3 ]]; then
         local dokkucommands=`echo "$_LOCAL_DOKKU_CMP_CACHED_CMD" | awk '{print $1}'`
         COMPREPLY=($(compgen -W "${dokkucommands}" -- ${cur}))
@@ -67,4 +66,4 @@ __dokku_LOCAL_DOKKU()
             ;;
     esac
 } &&
-complete -F __dokku_LOCAL_DOKKU $_DOKKU_CMD
+complete -F __dokku_LOCAL_DOKKU dokku
