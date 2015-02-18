@@ -29,6 +29,7 @@ __dokku_LOCAL_DOKKU()
         _LOCAL_DOKKU_CMP_APP_LIST=""
         _LOCAL_DOKKU_CMP_ENV=""
         _LOCAL_DOKKU_CMP_ENV_ALL=""
+        _LOCAL_DOKKU_CMP_VOLUMES=""
         return 0
     fi
 
@@ -61,6 +62,15 @@ __dokku_LOCAL_DOKKU()
                 _LOCAL_DOKKU_CMP_ENV_ALL=`$_dokku_cmd_LOCAL_DOKKU cmp:env:list:known $appname  | _dokku_dos2unix`
             fi
             COMPREPLY=( $( compgen -W "${_LOCAL_DOKKU_CMP_ENV_ALL}" -S '=' -- ${cur}))
+            compopt -o nospace
+            return 0
+            ;;
+        volume:delete|volume:info|volume:link|volume:list:apps|volume:unlink)
+            if [[ -z ${_LOCAL_DOKKU_CMP_VOLUMES} ]]; then
+                _LOCAL_DOKKU_CMP_VOLUMES=`$_dokku_cmd_LOCAL_DOKKU volume:list | _dokku_dos2unix`
+            fi
+
+            COMPREPLY=( $( compgen -W "${_LOCAL_DOKKU_CMP_VOLUMES}" -- ${cur}))
             compopt -o nospace
             return 0
             ;;
