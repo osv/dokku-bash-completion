@@ -44,4 +44,4 @@ Currently can complete:
 ## TODO
 
 - dokku-alt - complete database name
-- complete volume names (volume:list)
+
