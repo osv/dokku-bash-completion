@@ -60,9 +60,9 @@ EOF
         HOSTNAME=$(hostname -f)
 
         [[ -z $2 ]] && echo "echo Please specify command that you use to connect to dokku host \"$HOSTNAME\"
-echo \"ssh -t dokku@$HOSTNAME completion dokku-cli | sudo bash\"
+echo \"ssh dokku@$HOSTNAME completion dokku-cli | sudo bash\"
 echo \"Or:\"
-echo \"ssh -t dokku@$HOSTNAME completion dokku-cli example.com | sudo bash\"" && exit 1
+echo \"ssh dokku@$HOSTNAME completion dokku-cli example.com | sudo bash\"" && exit 1
         [[ -n $3 ]] && HOSTNAME="$3"
 
         CMD="$2"
