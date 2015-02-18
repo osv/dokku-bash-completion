@@ -39,6 +39,7 @@ Currently can complete:
 - commands
 - application ("<app>")
 - env variables for (config:get, config:set, etc)
+- volume names (volume:link volume:deletee, etc)
 
 ## TODO
 
